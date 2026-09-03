@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>《餐饮服务》（双语）教材（Made by Adam_W) Food and Beverage Service (Bilingual) Textbook (Made by Adam_W)</title>
+<style>
+:root{
+  --blue:#2563eb;
+  --blue-dark:#1d4ed8;
+  --blue-soft:#eff4ff;
+  --blue-block:#2f6fb3;
+  --ink:#1f2937;
+  --ink-soft:#4b5563;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --bg:#f5f7fa;
+  --card:#ffffff;
+  --accent:#f59e0b;
+  --note:#fff7d6;
+  --note-border:#f0d878;
+  --radius:12px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 6px 18px rgba(0,0,0,.04);
+  --sidebar-w:300px;
+  --topbar-h:60px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased;
+}
+/* Top bar */
+.topbar{
+  position:fixed;top:0;left:0;right:0;height:var(--topbar-h);background:#fff;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:12px;padding:0 16px;z-index:50;box-shadow:0 1px 4px rgba(0,0,0,.04);
+}
+.topbar .menu-btn{display:none;border:none;background:transparent;font-size:22px;cursor:pointer;color:var(--blue);}
+.topbar .title{font-weight:700;font-size:15px;color:var(--blue-dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.topbar .spacer{flex:1;}
+.topbar .tool-btn{
+  border:1px solid var(--line);background:#fff;color:var(--ink-soft);border-radius:8px;padding:7px 12px;
+  font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:.15s;
+}
+.topbar .tool-btn:hover{border-color:var(--blue);color:var(--blue);}
+.topbar .tool-btn.active{background:var(--blue);color:#fff;border-color:var(--blue);}
+.lang-toggle{font-weight:600;}
+
+/* Layout */
+.layout{display:flex;margin-top:var(--topbar-h);min-height:calc(100vh - var(--topbar-h));}
+
+/* Sidebar TOC */
+.sidebar{
+  width:var(--sidebar-w);flex:0 0 var(--sidebar-w);background:#fff;border-right:1px solid var(--line);
+  position:sticky;top:var(--topbar-h);height:calc(100vh - var(--topbar-h));overflow-y:auto;padding:14px 10px 60px;
+}
+.sidebar .toc-head{font-size:12px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;padding:6px 10px;font-weight:700;}
+.toc-project{margin:4px 0;}
+.toc-project>a{
+  display:block;padding:10px 12px;border-radius:8px;color:var(--ink);font-weight:700;text-decoration:none;font-size:14.5px;
+  background:var(--blue-soft);border-left:4px solid var(--blue);cursor:pointer;
+}
+.toc-project>a:hover{background:#e3ecff;}
+.toc-tasks{margin:2px 0 6px 6px;padding-left:6px;border-left:1px dashed var(--line);}
+.toc-task>a{
+  display:block;padding:7px 10px;border-radius:6px;color:var(--ink-soft);text-decoration:none;font-size:13.5px;cursor:pointer;
+}
+.toc-task>a:hover{background:var(--blue-soft);color:var(--blue-dark);}
+.toc-task>a.sub{font-size:12.5px;color:var(--muted);padding-left:20px;}
+
+/* Content */
+.content{flex:1;min-width:0;padding:24px clamp(16px,4vw,56px) 120px;}
+.page{max-width:920px;margin:0 auto;}
+
+/* Project / Task headers */
+.project{border-top:3px solid var(--blue);margin-top:8px;}
+.project-title{
+  background:linear-gradient(135deg,var(--blue),var(--blue-block));color:#fff;border-radius:var(--radius);
+  padding:18px 22px;margin:18px 0 8px;box-shadow:var(--shadow);
+}
+.project-title h1{margin:0;font-size:clamp(18px,2.4vw,24px);font-weight:800;letter-spacing:.01em;}
+.project-title .en{font-size:clamp(12px,1.6vw,15px);opacity:.9;font-weight:500;margin-top:4px;}
+.task-title{
+  background:var(--blue-soft);border-left:5px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;
+  padding:14px 20px;margin:22px 0 8px;
+}
+.task-title h2{margin:0;font-size:clamp(16px,2vw,20px);color:var(--blue-dark);font-weight:800;}
+.task-title .en{display:block;font-size:13px;color:var(--muted);font-weight:500;margin-top:2px;}
+
+/* Module blocks */
+.module{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin:14px 0;
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.module>.mod-head{
+  display:flex;align-items:center;gap:10px;padding:12px 18px;background:var(--blue-block);color:#fff;
+}
+.module>.mod-head .zh{font-weight:800;font-size:15.5px;}
+.module>.mod-head .en{font-size:12.5px;opacity:.9;font-weight:500;}
+.module .mod-body{padding:16px 20px;}
+.module .mod-tools{margin-left:auto;display:flex;gap:8px;}
+.mod-btn{
+  border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.12);color:#fff;border-radius:7px;
+  padding:5px 11px;font-size:12.5px;cursor:pointer;transition:.15s;white-space:nowrap;
+}
+.mod-btn:hover{background:#fff;color:var(--blue-block);}
+.mod-btn.active{background:#fff;color:var(--blue-block);}
+
+/* bilingual text */
+.bilang{margin:0;}
+.bilang .en{color:var(--ink);}
+.bilang .zh{color:var(--ink-soft);}
+.bilang p{margin:.55em 0;}
+/* default both visible */
+.mod-body .zh{display:block;}
+.mod-body.hide-zh .zh{display:none;}
+.mod-body.hide-en .en{display:none;}
+/* the 3 special modules start with zh hidden */
+.translate-module .zh{display:none;}
+.translate-module.revealed .zh{display:block;}
+
+.note-hint{font-size:12px;color:var(--muted);margin:0 0 8px;font-style:italic;}
+
+/* tables */
+table.tbl{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;background:#fff;}
+table.tbl caption{font-weight:700;color:var(--blue-dark);text-align:left;padding:6px 0;font-size:14px;}
+table.tbl th,table.tbl td{border:1px solid var(--line);padding:9px 11px;vertical-align:top;text-align:left;}
+table.tbl thead th{background:var(--blue);color:#fff;font-weight:700;}
+table.tbl tbody tr:nth-child(even){background:#fafbfe;}
+
+/* headings inside modules */
+.mod-body h4{color:var(--blue-dark);margin:16px 0 6px;font-size:15.5px;}
+.mod-body h5{color:var(--ink);margin:12px 0 4px;font-size:14.5px;}
+.mod-body ul,.mod-body ol{padding-left:22px;margin:.5em 0;}
+.mod-body li{margin:.3em 0;}
+
+/* comprehension Q&A */
+.quiz{border-top:1px dashed var(--line);margin-top:12px;padding-top:8px;}
+.quiz .q{font-weight:600;margin:12px 0 4px;}
+.quiz .a{color:var(--ink-soft);background:var(--blue-soft);border-left:3px solid var(--blue);padding:8px 14px;border-radius:0 8px 8px 0;display:none;margin:4px 0 10px;}
+.quiz .a.show{display:block;}
+.quiz .show-ans{border:none;background:var(--blue);color:#fff;border-radius:6px;padding:4px 12px;font-size:12.5px;cursor:pointer;margin-top:2px;}
+
+/* extended reading */
+.ext-read .mod-head{background:#0f766e;}
+.ext-read .en-only{font-style:italic;color:var(--ink);}
+
+/* notes system */
+mark.note-hl{background:var(--note);border-bottom:2px solid var(--note-border);cursor:pointer;padding:0 1px;border-radius:2px;}
+.sel-pop{
+  position:absolute;z-index:120;background:var(--blue-dark);color:#fff;border:none;border-radius:8px;
+  padding:8px 12px;font-size:13px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25);display:none;
+}
+.sel-pop:hover{background:var(--blue);}
+.note-panel{
+  position:fixed;top:var(--topbar-h);right:0;width:340px;max-width:88vw;height:calc(100vh - var(--topbar-h));
+  background:#fff;border-left:1px solid var(--line);box-shadow:-6px 0 24px rgba(0,0,0,.08);z-index:60;
+  transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column;
+}
+.note-panel.open{transform:translateX(0);}
+.note-panel .np-head{padding:14px 16px;border-bottom:1px solid var(--line);font-weight:700;color:var(--blue-dark);display:flex;justify-content:space-between;align-items:center;}
+.note-panel .np-head .close{border:none;background:transparent;font-size:20px;cursor:pointer;color:var(--muted);}
+.note-panel .np-body{flex:1;overflow-y:auto;padding:12px 14px;}
+.note-card{background:var(--note);border:1px solid var(--note-border);border-radius:10px;padding:10px 12px;margin-bottom:10px;position:relative;}
+.note-card .quote{font-size:12.5px;color:var(--ink-soft);border-left:3px solid var(--note-border);padding-left:8px;margin-bottom:6px;max-height:60px;overflow:hidden;}
+.note-card .text{font-size:14px;white-space:pre-wrap;word-break:break-word;}
+.note-card .del{position:absolute;top:6px;right:8px;border:none;background:transparent;color:#c0392b;cursor:pointer;font-size:13px;}
+.note-card .jump{display:inline-block;margin-top:6px;font-size:12px;color:var(--blue);cursor:pointer;text-decoration:underline;background:none;border:none;padding:0;}
+.note-empty{color:var(--muted);font-size:13px;text-align:center;margin-top:30px;}
+.note-input-mask{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:130;display:none;align-items:center;justify-content:center;padding:20px;}
+.note-input-box{background:#fff;border-radius:14px;padding:18px;width:100%;max-width:440px;box-shadow:0 12px 40px rgba(0,0,0,.3);}
+.note-input-box h4{margin:0 0 10px;color:var(--blue-dark);}
+.note-input-box .sel-text{background:var(--note);border-radius:8px;padding:8px 10px;font-size:13px;color:var(--ink-soft);max-height:90px;overflow:auto;margin-bottom:10px;}
+.note-input-box textarea{width:100%;min-height:90px;border:1px solid var(--line);border-radius:10px;padding:10px;font-family:inherit;font-size:14px;resize:vertical;}
+.note-input-box .row{display:flex;gap:10px;justify-content:flex-end;margin-top:12px;}
+.btn{border:none;border-radius:9px;padding:9px 16px;font-size:14px;cursor:pointer;}
+.btn.cancel{background:#eee;color:var(--ink-soft);}
+.btn.save{background:var(--blue);color:#fff;}
+
+/* footer */
+.disclaimer{position:fixed;bottom:0;left:0;right:0;background:var(--ink);color:#cbd5e1;font-size:11.5px;text-align:center;padding:7px 10px;z-index:40;line-height:1.4;}
+.disclaimer .en{display:block;opacity:.8;font-size:10.5px;}
+
+/* mobile */
+@media (max-width:860px){
+  .topbar .menu-btn{display:block;}
+  .sidebar{position:fixed;left:0;top:var(--topbar-h);z-index:45;transform:translateX(-100%);transition:transform .25s;box-shadow:6px 0 24px rgba(0,0,0,.12);}
+  .sidebar.open{transform:translateX(0);}
+  .content{padding:18px 14px 120px;}
+  .scrim{position:fixed;inset:var(--topbar-h) 0 0 0;background:rgba(0,0,0,.3);z-index:44;display:none;}
+  .scrim.show{display:block;}
+}
+.overlay-scrim{position:fixed;inset:0;z-index:43;display:none;}
+.overlay-scrim.show{display:block;}
+
+.intro{margin:8px 0 4px;}
+.intro-card{max-width:920px;margin:0 auto;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;border-radius:16px;padding:30px 30px 26px;box-shadow:var(--shadow);}
+.intro-badge{display:inline-block;background:rgba(255,255,255,.16);padding:5px 12px;border-radius:999px;font-size:12.5px;margin-bottom:12px;}
+.intro h1{margin:0 0 6px;font-size:clamp(22px,3.4vw,34px);line-height:1.25;font-weight:800;}
+.intro h1 .en{font-size:clamp(14px,2vw,20px);font-weight:600;opacity:.92;}
+.byline{margin:0 0 18px;opacity:.9;font-size:13.5px;}
+.guide{background:rgba(255,255,255,.12);border-radius:12px;padding:14px 18px;margin-bottom:14px;}
+.guide h3{margin:0 0 8px;font-size:15px;}
+.guide ul{margin:0;padding-left:20px;}
+.guide li{margin:5px 0;font-size:13.5px;line-height:1.6;}
+.guide b{color:#ffe9a8;}
+.ocr-note{margin:0;font-size:12px;opacity:.78;line-height:1.5;}
+
+/* ========== 保护逻辑开始 ========== */
+#idOverlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+#idOverlay .id-box{background:#fff;border-radius:16px;padding:36px 32px 28px;max-width:420px;width:90%;box-shadow:0 8px 40px rgba(0,0,0,.25);text-align:center;}
+#idOverlay .id-box h3{margin:0 0 6px;font-size:18px;color:var(--blue-dark);}
+#idOverlay .id-box p{margin:0 0 20px;font-size:13px;color:var(--muted);line-height:1.6;}
+#idOverlay .id-box input{width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:8px;font-size:15px;outline:none;transition:.15s;}
+#idOverlay .id-box input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.15);}
+#idOverlay .id-box .id-err{color:#dc2626;font-size:12px;min-height:18px;margin-top:6px;}
+#idOverlay .id-box button{margin-top:14px;width:100%;padding:11px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;transition:.15s;}
+#idOverlay .id-box button:hover{background:var(--blue-dark);}
+.tamper-warn{position:fixed;top:0;left:0;right:0;background:#dc2626;color:#fff;text-align:center;padding:10px 14px;font-size:13px;font-weight:600;z-index:9998;display:none;line-height:1.5;}
+.content.blurred{filter:blur(4px);pointer-events:none;transition:filter .3s;}
+#idBadge{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:10px;color:rgba(203,213,225,.6);cursor:pointer;line-height:1.3;max-width:200px;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#idBadge:hover{color:rgba(203,213,225,.9);}
+/* ========== 保护逻辑结束 ========== */
+</style>
+</head>
+<body>
+<noscript><div style="position:fixed;top:0;left:0;width:100%;height:100%;background:#f5f7fa;z-index:99999;display:flex;align-items:center;justify-content:center;font-size:18px;color:#1f2937;padding:40px;text-align:center;line-height:1.8;">请启用JavaScript以正常使用本电子教材<br>Please enable JavaScript to use this digital textbook properly.</div></noscript>
+
+<!-- ========== 保护逻辑开始 ========== -->
+<div id="idOverlay">
+  <div class="id-box">
+    <h3>身份验证 Identity Verification</h3>
+    <p>请输入您的姓名完成身份验证，身份信息仅用于学习溯源，不会上传至任何服务器<br><span style="font-size:11px;opacity:.7;">Enter your name for identity verification. Data is stored locally only.</span></p>
+    <input type="text" id="idInput" maxlength="20" placeholder="请输入姓名 / Enter your name" autocomplete="off">
+    <div class="id-err" id="idErr"></div>
+    <button id="idConfirm">确认验证 Confirm</button>
+  </div>
+</div>
+<div class="tamper-warn" id="tamperWarn">⚠ 警告：本教材内容已被篡改，可能影响学习效果，请使用官方原版文件<br>WARNING: Content has been tampered with. Please use the official version.</div>
+<!-- ========== 保护逻辑结束 ========== -->
+
+<div class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录">☰</button>
+  <div class="title">餐饮服务（双语）· Food &amp; Beverage Service</div>
+  <div class="spacer"></div>
+  <button class="tool-btn" id="notesBtn">📝 笔记 <span id="noteCount">(0)</span></button>
+</div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+=== Fixed content added ===
