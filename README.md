@@ -1,7 +1,7 @@
 # Catering English digi-Textbook
-# Catering English digi-Textbook
-# 电子教材知识产权声明与免责声明
 
+
+# 电子教材知识产权声明与免责声明
 ---
 
 ## 一、作品归属与改编说明
