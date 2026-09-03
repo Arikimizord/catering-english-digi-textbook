@@ -1,0 +1,166 @@
+/* ========== 复古印刷设计风格 (Vintage Print Design Style) ========== */
+
+/* 更新CSS变量为复古印刷色调 */
+:root {
+  /* 复古印刷色彩系统 */
+  --print-bg: #f5f0e1;           /* 米白纸张背景 */
+  --print-ink: #2c1a0d;          /* 深褐色墨色 */
+  --print-ink-soft: #4a3220;     /* 浅褐色文字 */
+  --print-muted: #6b5d4f;        /* 复古灰色 */
+  --print-line: #d4c9b8;         /* 纸张纹理线 */
+  --print-accent: #8b4513;       /* 马鞍棕强调色 */
+  --print-note: #fff8dc;         /* 复古笔记黄 */
+  --print-note-border: #d4a017;  /* 复古边框金 */
+  --print-shadow: rgba(44, 26, 13, 0.08); /* 复古阴影 */
+
+  /* 蓝色系统调整为复古色调 */
+  --blue: #3d5a80;              /* 复古海军蓝 */
+  --blue-dark: #2d4a6b;         /* 深海军蓝 */
+  --blue-soft: #e8eff5;         /* 浅蓝背景 */
+  --blue-block: #355c7d;        /* 模块蓝 */
+
+  /* 覆盖原有变量 */
+  --ink: var(--print-ink);
+  --ink-soft: var(--print-ink-soft);
+  --muted: var(--print-muted);
+  --line: var(--print-line);
+  --bg: var(--print-bg);
+  --accent: var(--print-accent);
+  --note: var(--print-note);
+  --note-border: var(--print-note-border);
+  --shadow: var(--print-shadow);
+}
+
+/* 纸张纹理效果 */
+body {
+  background-image:
+    linear-gradient(to right, rgba(212, 201, 184, 0.3) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(212, 201, 184, 0.3) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* 复古衬线字体 */
+body, .project-title, .task-title, .mod-head {
+  font-family: "Georgia", "Times New Roman", "Songti SC", "SimSun", serif;
+}
+
+/* 顶部栏复古化 */
+.topbar {
+  background: linear-gradient(to bottom, #fff, #f5f0e1);
+  border-bottom: 2px solid var(--print-line);
+  box-shadow: 0 2px 8px rgba(44, 26, 13, 0.1);
+}
+
+/* 项目标题复古风格 */
+.project-title {
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  box-shadow:
+    0 4px 12px rgba(44, 26, 13, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(44, 26, 13, 0.1);
+}
+
+/* 模块卡片复古化 */
+.module {
+  border: 1px solid var(--print-line);
+  box-shadow:
+    0 2px 6px rgba(44, 26, 13, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  background: linear-gradient(to bottom, #fff, #faf8f3);
+}
+
+.module>.mod-head {
+  background: linear-gradient(to right, var(--blue-block), var(--blue-dark));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* 页脚复古化 */
+.disclaimer {
+  background: linear-gradient(to top, var(--print-ink), #2c1a0d);
+  border-top: 2px solid var(--print-line);
+  box-shadow: 0 -2px 10px rgba(44, 26, 13, 0.1);
+}
+
+/* 侧边栏复古化 */
+.sidebar {
+  background: linear-gradient(to bottom, #fff, #faf8f3);
+  border-right: 2px solid var(--print-line);
+}
+
+/* 笔记面板复古化 */
+.note-panel {
+  background: linear-gradient(to left, #fff, #faf8f3);
+  border-left: 2px solid var(--print-line);
+}
+
+/* 笔记卡片复古化 */
+.note-card {
+  background: var(--print-note);
+  border: 1px solid var(--print-note-border);
+  box-shadow: 0 2px 6px rgba(44, 26, 13, 0.1);
+}
+
+/* 按钮复古化 */
+.btn {
+  font-family: "Georgia", serif;
+  font-weight: 600;
+  border: 1px solid var(--print-line);
+  box-shadow: 0 2px 4px rgba(44, 26, 13, 0.1);
+}
+
+.btn:hover {
+  box-shadow: 0 3px 6px rgba(44, 26, 13, 0.15);
+}
+
+/* 工具按钮复古化 */
+.tool-btn {
+  background: linear-gradient(to bottom, #fff, #f5f0e1);
+  border: 1px solid var(--print-line);
+  box-shadow: 0 1px 3px rgba(44, 26, 13, 0.08);
+}
+
+.tool-btn:hover {
+  background: linear-gradient(to bottom, #f5f0e1, #ebe5d5);
+}
+
+/* 复古印刷式排版 */
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.page {
+  padding: 20px 0;
+}
+
+/* 表格复古化 */
+table.tbl {
+  border: 2px solid var(--print-line);
+  box-shadow: 0 2px 6px rgba(44, 26, 13, 0.08);
+}
+
+table.tbl thead th {
+  background: linear-gradient(to bottom, var(--blue), var(--blue-dark));
+  border-bottom: 2px solid var(--print-line);
+}
+
+/* 扩展阅读模块复古化 */
+.ext-read .mod-head {
+  background: linear-gradient(to right, #0f766e, #0d5f58);
+}
+
+/* 响应式调整 */
+@media print {
+  body {
+    background: #fff;
+    background-image: none;
+  }
+  .topbar, .sidebar, .disclaimer, .note-panel, .sel-pop {
+    display: none !important;
+  }
+  .content {
+    padding: 0;
+  }
+}
+
+/* ========== 复古印刷设计风格结束 ========== */
